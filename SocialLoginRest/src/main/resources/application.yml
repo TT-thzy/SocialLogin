@@ -1,0 +1,147 @@
+com:
+  qpp:
+    id:
+      generator:
+        #        url: http://dev.printerstudio.cn/cgp-rest-id-generator/common/key
+        segment-url: https://sz-nginx-test1.qppdev.com/cgp-id-generator-remote/common/keyGenerate/segment
+        cache:
+          enable: true
+          size: 10
+          threshold: 5
+    mongo:
+      type-key: clazz
+      mongobee:
+        # mongobee 全局 enable 配置属性
+        enable: false
+        # mongobee 实例配置
+        instances:
+          # mongobee 实例 id
+          defaultMongoBee:
+            # mongobee 实例 enable 配置属性, 可选, 默认true
+            enable: true
+            # 要操作mongo数据库的uri
+            uri: ${spring.data.mongodb.uri}
+            # 要扫描的 package
+            scanPackage: com.qpp.cgp.changelogs.primary
+          configMongoBee:
+            uri: ${spring.data.mongodb.config.uri}
+            scanPackage: com.qpp.cgp.changelogs.config
+          runtimeMongoBee:
+            uri: ${spring.data.mongodb.runtime.uri}
+            scanPackage: com.qpp.cgp.changelogs.runtime
+    web:
+      enable-multi-read-request-filter: true
+    operation-log:
+      enable: true
+      applicationName: cgp2-192.168.26.62
+    security:
+      token-endpoint: https://dev-sz-qpson-nginx.qppdev.com/cgp2-oauth/oauth/token
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  output:
+    ansi:
+      enabled: ALWAYS   #控制台彩色打印输出
+  mvc:
+    throw-exception-if-no-handler-found: true
+  data:
+    mongodb:
+      uri: mongodb://bergwong:Er8^KZe*@192.168.26.81:27017,192.168.26.82:27017,192.168.26.83:27017/cgp2_dev
+      config:
+        uri: mongodb://bergwong:Er8^KZe*@192.168.26.81:27017,192.168.26.82:27017,192.168.26.83:27017/cgp2_dev_config_70
+      runtime:
+        uri: mongodb://bergwong:Er8^KZe*@192.168.26.81:27017,192.168.26.82:27017,192.168.26.83:27017/cgp2_dev_runtime_70
+  kafka:
+    bootstrap-servers:
+      - 192.168.26.40:9092
+      - 192.168.26.41:9092
+    client-id: cgp2-dev-62
+    consumer:
+      bootstrap-servers:
+        - 192.168.26.40:9092
+        - 192.168.26.41:9092
+      client-id: cgp2-dev-62
+      enable-auto-commit: false
+      group-id: cgp2-dev
+      max-poll-records: 1
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+      client-id: cgp2-localhost
+      concurrency: 1
+      poll-timeout:
+    producer:
+      properties:
+        max.in.flight.requests.per.connection: 1
+      acks: all
+      batch-size:
+      bootstrap-servers:
+        - 192.168.26.40:9092
+        - 192.168.26.41:9092
+      buffer-memory:
+      client-id: cgp2-localhost
+      retries: 3
+    template:
+      default-topic: cgp-mail
+    open-in-view: true
+  jmx:
+    enabled: false
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+  #spring redis连接配置
+  ###############################
+  redis:
+    time-out: 5000ms
+    #spring jedis连接池
+    sentinel:
+      master: mymaster
+      nodes: 192.168.26.84:26379,192.168.26.85:26379,192.168.26.86:26379
+      password: Dev!123a
+    #默認連接db
+    database: 0
+    password: Dev!123a
+    client-type: lettuce
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          client-id: innerapi
+          client-secret: rzTWWxo4Sb2Xq9
+          introspection-uri: http://192.168.26.70/cgp2-oauth/oauth/check_token
+  cloud:
+    discovery:
+      enabled: true
+      client:
+        health-indicator:
+          enabled: true
+        simple:
+          instances:
+            cgp-service:
+              - uri: http://127.0.0.1
+  arthas:
+    enabled: false
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include:
+          - beans
+          - health
+          - httptrace
+          - threaddump
+debug: false
+cgp:
+  path: cgp-rest
+  token: "Basic aW5uZXJhcGk6cnpUV1d4bzRTYjJYcTk="
+application:
+  mode: stage
+oauth:
+  server: https://dev-sz-qpson-nginx.qppdev.com/cgp2-oauth/
+server:
+  servlet:
+    context-path: /cgp-social-rest
+  port: 8081
