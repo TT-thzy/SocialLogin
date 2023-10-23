@@ -1,2 +1,5 @@
 rootProject.name = 'SocialLoginComponent'
+include 'SocialLoginRest'
+include 'SocialLoginCommon'
+include 'SocialLoginCore'
 
