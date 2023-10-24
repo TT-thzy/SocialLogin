@@ -26,15 +26,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableAspectJAutoProxy(exposeProxy = true)
 @ComponentScan(
-        basePackages = {"com.qpp"}
+        basePackages = {"com.thzy"}
 )
 @SpringBootApplication(exclude = {GsonAutoConfiguration.class, FlywayAutoConfiguration.class})
 @PropertySource("classpath:application.yml")
-@PropertySource("classpath:mail.service.properties")
 public class SocialLoginRestApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SocialLoginRestApplication.class, args);
-        System.out.println("debug");
     }
 }
