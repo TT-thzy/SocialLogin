@@ -3,7 +3,6 @@ package com.thzy.socialLogin.mongo.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.qpp.core.Multilingual;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.*;

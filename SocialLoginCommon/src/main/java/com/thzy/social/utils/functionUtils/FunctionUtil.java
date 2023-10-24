@@ -1,10 +1,10 @@
 package com.thzy.social.utils.functionUtils;
 
-import com.qpp.core.exception.BusinessException;
 import com.thzy.social.utils.functionUtils.funtionInterface.BranchHandleFunction;
 import com.thzy.social.utils.functionUtils.funtionInterface.ThrowBusinessExceptionFunction;
 import com.thzy.social.utils.functionUtils.funtionInterface.ThrowExceptionFunction;
-import com.qpp.web.core.exception.BusinessExceptionBuilder;
+import com.thzy.socialLogin.exception.BusinessException;
+import com.thzy.socialLogin.exception.BusinessExceptionBuilder;
 
 /**
  * @className: FunctionUtil
