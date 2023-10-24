@@ -8,7 +8,7 @@ spring:
     throw-exception-if-no-handler-found: true
   data:
     mongodb:
-      uri: mongodb://bergwong:Er8^KZe*@192.168.26.81:27017,192.168.26.82:27017,192.168.26.83:27017/cgp2_dev
+      uri: ##待填充
   servlet:
     multipart:
       max-file-size: 20MB
@@ -19,30 +19,13 @@ spring:
     time-out: 5000ms
     #spring jedis连接池
     sentinel:
-      master: mymaster
-      nodes: 192.168.26.84:26379,192.168.26.85:26379,192.168.26.86:26379
-      password: Dev!123a
+      master: ##待填充
+      nodes: ##待填充
+      password: ##待填充
     #默認連接db
     database: 0
-    password: Dev!123a
+    password: ##待填充
     client-type: lettuce
-  security:
-    oauth2:
-      resourceserver:
-        opaquetoken:
-          client-id: innerapi
-          client-secret: rzTWWxo4Sb2Xq9
-          introspection-uri: http://192.168.26.70/cgp2-oauth/oauth/check_token
-  cloud:
-    discovery:
-      enabled: true
-      client:
-        health-indicator:
-          enabled: true
-        simple:
-          instances:
-            cgp-service:
-              - uri: http://127.0.0.1
 management:
   endpoint:
     health:
@@ -57,5 +40,5 @@ management:
           - threaddump
 server:
   servlet:
-    context-path: /cgp-social-rest
-  port: 8081
+    context-path: /social-rest
+  port: 80
