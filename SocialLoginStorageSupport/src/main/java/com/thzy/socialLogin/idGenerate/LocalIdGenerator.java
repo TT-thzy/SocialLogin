@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LocalIdGenerator {
+public class LocalIdGenerator implements IdGenerator{
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -26,4 +26,8 @@ public class LocalIdGenerator {
         return keyGenerator.getKey();
     }
 
+    @Override
+    public Long generateId() {
+        return this.generateKeyDB();
+    }
 }

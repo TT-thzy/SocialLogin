@@ -37,11 +37,4 @@ public class JacksonConfiguration {
         return module;
     }
 
-    @Bean
-    public Hibernate5Module hibernate5Module() {
-        Hibernate5Module module = new Hibernate5Module();
-        module.enable(Hibernate5Module.Feature.FORCE_LAZY_LOADING);
-        return module;
-    }
-
 }

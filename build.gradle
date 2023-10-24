@@ -128,6 +128,7 @@ subprojects {
         api('org.springframework.boot:spring-boot-starter-data-redis')
         api('org.springframework.boot:spring-boot-starter-json')
         api "org.redisson:redisson"
+        api('org.springframework.boot:spring-boot-starter-web')
         api 'org.springframework:spring-web'
         api 'org.springframework:spring-webmvc'
         // jackson
