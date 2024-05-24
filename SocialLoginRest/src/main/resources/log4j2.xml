@@ -20,16 +20,8 @@
             <PatternLayout pattern="${sys:CONSOLE_LOG_PATTERN}" />
             <ThresholdFilter level="OPERATOR" onMatch="DENY" onMismatch="ACCEPT"/>
         </Console>
-        <Kafka name="Kafka" topic="operation-logs">
-            <JsonLayout complete="true" compact="true" includeStackTrace="false" >
-                <KeyValuePair key="operation" value="$${ctx:operation}"/>
-            </JsonLayout>
-            <Property name="bootstrap.servers">192.168.26.40:9092</Property>
-            <ThresholdFilter level="OPERATOR" onMatch="ACCEPT" onMismatch="DENY"/>
-        </Kafka>
         <Async name="Async">
             <AppenderRef ref="Console"/>
-            <AppenderRef ref="Kafka"/>
         </Async>
     </Appenders>
     <Loggers>
